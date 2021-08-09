@@ -48,11 +48,21 @@ describe('CrowdFund Contract Project', () => {
         assert.ok(crowdfund.options.address);
     });
 
-    //Test to know if the person(address) that calls deployNewCrowdFund()-function from crowdfundFactory contract class to
+    //Test whether a person(address) that calls deployNewCrowdFund()-function from crowdfundFactory contract class to
     //deploy a crowdfund instance is the manager/address/owner of that crowdfund
     it('verifies the manager of a crowdfund', async () => {
         const manager = await crowdfund.methods.manager().call();
-
         assert.equal(accounts[0], manager);
-    })
+    });
+
+    //Test whether a person can contribute and mark as a contributor
+    it('allows a person to contribute and marked as a contributor', async () => {
+        await crowdfund.methods.contribute().send({
+            value: "200",
+            from: accounts[1]
+        });
+
+        const isContributor = await crowdfund.methods.contributors(accounts[1]).call();
+        assert(isContributor);
+    });
 });
