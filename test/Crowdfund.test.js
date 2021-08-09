@@ -39,3 +39,11 @@ beforeEach(async () => {
         crowdfundAddress
     );
 });
+
+//Test for successfull deployment of contracts
+describe('CrowdFund Contract Project', () => {
+    it('deploys a factory and a crowdfund', ()=> {
+        assert.ok(factoryInstance.options.address);
+        assert.ok(crowdfund.options.address);
+    });
+});
