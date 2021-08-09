@@ -40,10 +40,19 @@ beforeEach(async () => {
     );
 });
 
-//Test for successfull deployment of contracts
+
 describe('CrowdFund Contract Project', () => {
+    //Test for successfull deployment of contracts
     it('deploys a factory and a crowdfund', ()=> {
         assert.ok(factoryInstance.options.address);
         assert.ok(crowdfund.options.address);
     });
+
+    //Test to know if the person(address) that calls deployNewCrowdFund()-function from crowdfundFactory contract class to
+    //deploy a crowdfund instance is the manager/address/owner of that crowdfund
+    it('verifies the manager of a crowdfund', async () => {
+        const manager = await crowdfund.methods.manager().call();
+
+        assert.equal(accounts[0], manager);
+    })
 });
