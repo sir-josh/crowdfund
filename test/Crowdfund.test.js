@@ -92,4 +92,38 @@ describe('CrowdFund Contract Project', () => {
         const request = await crowdfund.methods.managerRequests(0).call();
         assert.equal('For raw materials', request.description);
     });
+
+    //Test for various manager's request functions inside crowdfund contract
+    it('processes a manager\'s request', async () => {
+        //Account 3 contributes to the project
+        await crowdfund.methods.contribute().send({
+            value: web3.utils.toWei('10', 'ether'),
+            from: accounts[3]
+        });
+
+        //Manager creates spending request to an external vendor's address at account 4
+        await crowdfund.methods
+        .createRequest("Pay company", web3.utils.toWei('4', 'ether'), accounts[4])
+        .send({ from: accounts[0], gas: "1000000" });
+
+        //Account 3 approves manager's spending request
+        await crowdfund.methods.approveRequestByContributor(0).send({
+            from: accounts[3],
+            gas: "1000000"
+        });
+
+        //Manager finalize the request to send money out
+        await crowdfund.methods.finalizeRequestByManager(0).send({
+            from: accounts[0],
+            gas: "1000000"
+        });
+
+        //Get account balance of the vendor at account 4
+        let balance = await web3.eth.getBalance(accounts[4]);
+        balance = parseFloat(web3.utils.fromWei(balance, 'ether')); //convert the balance to ether & output it as a float number
+        //console.log(balance);
+
+        //test to see whether the vendor's address recieve the spending request value/money (in ether)
+        assert(balance > 103);
+    });
 });
