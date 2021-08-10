@@ -65,4 +65,19 @@ describe('CrowdFund Contract Project', () => {
         const isContributor = await crowdfund.methods.contributors(accounts[1]).call();
         assert(isContributor);
     });
+
+    //Test for minimum requirement on a contribution to crowdfund
+    it('requires a minimum contribution', async () => {
+        try {
+            await crowdfund.methods.contribute().send({
+                value: "55",                   //contribution amount less than minimum requirement, therefore an error occurs
+                from: accounts[2]
+            });
+        } catch (error) {
+            assert(error);                     //if it fails (i.e catches an error), the test passes
+            return;                            //exit test 
+        }
+
+        assert(false);                         // code didn't fail, so test fails
+    });
 });
