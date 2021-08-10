@@ -80,4 +80,16 @@ describe('CrowdFund Contract Project', () => {
 
         assert(false);                         // code didn't fail, so test fails
     });
+
+
+    //Test whether the manager can make a request for payment
+    it('allows a manager to make payment request', async () => {
+        await crowdfund.methods.createRequest("For raw materials", "100", accounts[5]).send({
+            from: accounts[0],
+            gas: '1000000'
+        });
+
+        const request = await crowdfund.methods.managerRequests(0).call();
+        assert.equal('For raw materials', request.description);
+    });
 });
