@@ -4,8 +4,6 @@ const  fs = require('fs-extra');    //fs = file system
 
 const buildPath = path.resolve(__dirname, 'build'); //get the build directory
 
-console.log(buildPath);
-
 // if(buildPath){                          //Check to see if the build directory already exist
 //     fs.removeSync(buildPath);           //Then remove the build directory
 // }

@@ -3,8 +3,8 @@ pragma solidity ^0.4.17;
 contract CrowdFundFactory{
     address[] public deployedCrowdFundInstances;
     
-    function deployNewCrowdFund(uint minimumContribution) public {
-        address newProject = new CrowdFund(minimumContribution, msg.sender);
+    function deployNewCrowdFund(uint minimumContribution, string projectName, string projectDesc, string managerName) public {
+        address newProject = new CrowdFund(minimumContribution, msg.sender, projectName, projectDesc, managerName);
         deployedCrowdFundInstances.push(newProject);
     }
     
@@ -12,6 +12,8 @@ contract CrowdFundFactory{
         return deployedCrowdFundInstances;
     }
 }
+
+
 
 
 contract CrowdFund {
@@ -29,6 +31,9 @@ contract CrowdFund {
     uint public minimumContribution;
     mapping(address => bool) public contributors;
     uint public totalContributorsCount;
+    string projectName;
+    string projectDescription;
+    string owner;
     
     modifier restrictedAccess(){
         require(msg.sender == manager);
@@ -36,9 +41,12 @@ contract CrowdFund {
         _;
     }
     
-    function CrowdFund(uint minimumAmount, address creator) public {
+    function CrowdFund(uint minimumAmount, address creator, string description, string name, string managerName) public {
         manager = creator;
         minimumContribution = minimumAmount;
+        projectDescription = description;
+        projectName = name;
+        owner = managerName;
     }
     
     function contribute() public payable {
