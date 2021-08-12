@@ -1,7 +1,20 @@
-import react from 'react';
+import React, { Component } from 'react';
+import factory from '../ethereum/factory';
 
-export default () => {
-    return (
-        <h1>This is the homepage</h1>
-    );
+export class CrowdFundCreator extends Component {
+    async componentDidMount(){
+        const allDeployedCrowdfund = await factory.methods.getAllDeployedCrownFund().call();
+
+        console.log(allDeployedCrowdfund);
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>This is the index page</h1>
+            </div>
+        )
+    }
 }
+
+export default CrowdFundCreator;
