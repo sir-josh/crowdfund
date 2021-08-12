@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import factory from '../ethereum/factory';
 
 export class CrowdFundCreator extends Component {
-    async componentDidMount(){
+    static async getInitialProps () {
         const allDeployedCrowdfund = await factory.methods.getAllDeployedCrownfund().call();
-
-        console.log(allDeployedCrowdfund);
+        
+        return { crowdfunds: allDeployedCrowdfund }
     }
 
     render() {
         return (
             <div>
                 <h1>This is the index page</h1>
+                <p>{this.props.crowdfunds[0]}</p>
             </div>
         )
     }
