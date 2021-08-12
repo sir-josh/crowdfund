@@ -3,7 +3,7 @@ import factory from '../ethereum/factory';
 
 export class CrowdFundCreator extends Component {
     async componentDidMount(){
-        const allDeployedCrowdfund = await factory.methods.getAllDeployedCrownFund().call();
+        const allDeployedCrowdfund = await factory.methods.getAllDeployedCrownfund().call();
 
         console.log(allDeployedCrowdfund);
     }
