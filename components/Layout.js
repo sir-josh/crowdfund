@@ -9,7 +9,7 @@ export default (props) => {
             <div className={styles.layoutBody}>
                 {props.children}
             </div>
-            <h1>I am a footer</h1>
+            {/* <h1>I am a footer</h1> */}
         </div>
     )
 }
