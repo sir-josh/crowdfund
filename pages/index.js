@@ -28,8 +28,8 @@ export class CrowdFundCreator extends Component {
             <Layout>
                 <div>
                     <h3>Open crowdfund projects</h3>
+                    <Button floated="right" content="Create New Project" icon="add circle" style={{ backgroundColor: '#282c34',color: "white" }}></Button>
                     <p>{this.renderCrowdfund()}</p>
-                    <Button content="Create New Project" icon="add circle" primary></Button>
                 </div>
             </Layout>
         )
