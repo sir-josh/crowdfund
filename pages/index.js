@@ -3,6 +3,7 @@ import factory from '../ethereum/factory';
 import 'semantic-ui-css/semantic.min.css';
 import Layout from '../components/Layout';
 import { Button, Card } from 'semantic-ui-react';
+import styles from '../components/Layout.module.css';
 
 export class CrowdFundCreator extends Component {
     static async getInitialProps () {
@@ -29,7 +30,7 @@ export class CrowdFundCreator extends Component {
                 <div>
                     <h3>Open crowdfund projects</h3>
                     <Button floated="right" content="Create New Project" icon="add circle" style={{ backgroundColor: '#282c34',color: "white" }}></Button>
-                    <p>{this.renderCrowdfund()}</p>
+                    <div className={styles.cardSectionWidth}>{this.renderCrowdfund()}</div>
                 </div>
             </Layout>
         )
