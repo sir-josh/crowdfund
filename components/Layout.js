@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Header from './Header';
 import styles from './Layout.module.css';
 import { Container } from 'semantic-ui-react';
