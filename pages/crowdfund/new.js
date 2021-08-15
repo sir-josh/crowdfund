@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button,Input } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 
 export class NewCrowdfund extends Component {
@@ -10,7 +10,7 @@ export class NewCrowdfund extends Component {
                 <Form>
                     <Form.Field>
                         <label>Minimum contribution (wei)</label>
-                        <input />
+                        <Input label="wei" labelPosition="right" placeholder="Amount to donate" />
                     </Form.Field>
                     <Button content="Create project" style={{ backgroundColor: '#282c34',color: "white" }}></Button>
                 </Form>
