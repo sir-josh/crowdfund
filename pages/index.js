@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import factory from '../ethereum/factory';
-import 'semantic-ui-css/semantic.min.css';
+// import 'semantic-ui-css/semantic.min.css';
 import Layout from '../components/Layout';
 import { Button, Card } from 'semantic-ui-react';
 import styles from '../components/Layout.module.css';
