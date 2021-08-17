@@ -7,13 +7,15 @@ import web3 from '../../ethereum/web3';
 export class NewCrowdfund extends Component {
     state = {
         minimumContribution: '',
-        errorMessage: ''
+        errorMessage: '',
+        loading: false
     }
 
     submitFormCreation = async(event) => {
         event.preventDefault();
 
         const accounts = await web3.eth.getAccounts();
+        this.setState({ loading: true, errorMessage: '' });
 
         try {
             await factory.methods.deployNewCrowdFund(
@@ -27,6 +29,8 @@ export class NewCrowdfund extends Component {
         } catch (error) {
             this.setState({ errorMessage: error.message });
         }
+
+        this.setState({ loading: false });
     }
 
     render() {
@@ -48,7 +52,7 @@ export class NewCrowdfund extends Component {
                         />
                     </Form.Field>
                     <Message error header="Oops!" content={this.state.errorMessage} />
-                    <Button content="Create project" style={{ backgroundColor: '#282c34',color: "white" }}></Button>
+                    <Button loading={this.state.loading} content="Create project" style={{ backgroundColor: '#282c34',color: "white" }}></Button>
                 </Form>
             </Layout>
         )
