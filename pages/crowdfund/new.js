@@ -3,6 +3,7 @@ import { Form, Button, Input, Message } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import factory from '../../ethereum/factory';
 import web3 from '../../ethereum/web3';
+import { Router } from '../../routes';
 
 export class NewCrowdfund extends Component {
     state = {
@@ -20,12 +21,15 @@ export class NewCrowdfund extends Component {
         try {
             await factory.methods.deployNewCrowdFund(
                 this.state.minimumContribution, 
-                "Project Name",
-                "Project Description",
-                "Project Owner"
+                "Cregaig",
+                "Mix & match travelling bag with sections to create the perfect adventure kit. Adapts to carry toiletries, chargers, gear, tools, & life’s little things",
+                "Parker Thomas"
             ).send({
                 from: accounts[0]
             });
+
+            //Redirect to homepage after successfull creating new crowdfund to the blockchain
+            Router.pushRoute('/');
         } catch (error) {
             this.setState({ errorMessage: error.message });
         }
