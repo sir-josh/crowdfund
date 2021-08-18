@@ -17,7 +17,11 @@ export class CrowdFundCreator extends Component {
         const items = this.props.crowdfunds.map(crowdfund => {
             return {
                 header: crowdfund,
-                description: <a>View Project</a>,
+                description: (
+                    <Link route={`/crowdfund/${crowdfund}`}>
+                        <a>View Project</a>
+                    </Link>
+                ),
                 fluid: true
             }
         });
