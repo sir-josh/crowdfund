@@ -3,6 +3,7 @@ import factory from '../ethereum/factory';
 // import 'semantic-ui-css/semantic.min.css';
 import Layout from '../components/Layout';
 import { Button, Card } from 'semantic-ui-react';
+import { Link } from '../routes';
 import styles from '../components/Layout.module.css';
 
 export class CrowdFundCreator extends Component {
@@ -29,7 +30,11 @@ export class CrowdFundCreator extends Component {
             <Layout>
                 <div>
                     <h3>Open crowdfund projects</h3>
-                    <Button floated="right" content="Create New Project" icon="add circle" style={{ backgroundColor: '#282c34',color: "white" }}></Button>
+                    <Link route="/crowdfund/new">
+                        <a>
+                            <Button floated="right" content="Create New Project" icon="add circle" style={{ backgroundColor: '#282c34',color: "white" }}></Button>
+                        </a>
+                    </Link>
                     <div className={styles.cardSectionWidth}>{this.renderCrowdfund()}</div>
                 </div>
             </Layout>
