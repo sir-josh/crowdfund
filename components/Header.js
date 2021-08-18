@@ -1,22 +1,27 @@
 import React from 'react';
-import { Menu, Icon } from 'semantic-ui-react';
+import { Menu, Icon, Header } from 'semantic-ui-react';
+import { Link } from '../routes';
 
 
-export default () => {
+const HeaderMenu = () => {
     
     return(
         <Menu size="massive" style={{ borderRadius: 0, backgroundColor: '#282c34', color: "white", padding: "10px 30px 10px 80px"}}>
-            <Menu.Item style={{color: 'white'}}>
-                CROWDFUND
-            </Menu.Item>
+            <Link route="/">
+                <a className="item" style={{color: 'white'}}>CROWDFUND</a>
+            </Link>
             <Menu.Menu position="right" >
-                <Menu.Item style={{color: 'white'}}>
-                    Projects
-                </Menu.Item>
-                <Menu.Item style={{color: 'white'}}>
-                    <Icon name='add' />
-                </Menu.Item>
+                <Link route="/">
+                    <a className="item" style={{color: 'white'}}>Projects</a>
+                </Link>
+                <Link route="/crowdfund/new">
+                    <a className="item" style={{color: 'white'}}>
+                         <Icon name='add' />
+                    </a>
+                </Link>
             </Menu.Menu>
         </Menu>
     );
 }
+
+export default HeaderMenu;
