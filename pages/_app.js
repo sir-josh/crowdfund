@@ -1,5 +1,5 @@
 import React from 'react';
-import '../components/styles.css';
+import '../components/Layout.module.css';
 
 
 export default function MyApp({ Component, pageProps }) {
