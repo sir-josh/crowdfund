@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Layout from '../../components/Layout';
 
 export class ShowCrowdfund extends Component {
     render() {
         return (
-            <div>
-                <h3>Showing Crowdfund</h3>
-            </div>
+            <Layout>
+                <h3>All Crowdfund Projects</h3>
+            </Layout>
         )
     }
 }
