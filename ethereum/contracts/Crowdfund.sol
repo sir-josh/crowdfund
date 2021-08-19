@@ -91,4 +91,26 @@ contract CrowdFund {
         
         specificRequest.complete = true;  //Sets the request completion to be true
     }
+
+    function getCrowdFundStats() public view returns( uint, uint, uint, uint, address ){
+        return (
+            minimumContribution,
+            this.balance,
+            managerRequests.length,
+            totalContributorsCount,
+            manager
+        );
+    }
+
+    function getCrowdFundInfo() public view returns(string, string, string) {
+        return (
+            projectName,
+            projectDescription,
+            owner
+        );
+    }
+
+    function getAllManagerRequests() public view returns (uint){
+        return managerRequests.length;
+    }
 }
