@@ -16,7 +16,7 @@ const deployContract = async () => {
 
     const deploymentResult = await new web3.eth.Contract(JSON.parse(compiledCrowdfundFactory.interface))
                                 .deploy({ data: compiledCrowdfundFactory.bytecode })
-                                .send({ gas: '1000000', from: accounts[0]})
+                                .send({ gas: '1300000', from: accounts[0]})
 
     console.log('Contract deployed to ', deploymentResult.options.address);
 }
